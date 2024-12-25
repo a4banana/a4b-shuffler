@@ -1,0 +1,33 @@
+name: Publish
+
+on:
+ push:
+   tags:
+     - 'v*'
+
+permissions:
+ contents: read
+
+jobs:
+ publish:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v4
+     
+     - uses: denoland/setup-deno@v1
+       with:
+         deno-version: v1.x
+     
+     - name: Check formatting
+       run: deno fmt --check
+     
+     - name: Run linter
+       run: deno lint
+     
+     - name: Run tests
+       run: deno test
+     
+     - name: Publish package
+       env:
+         JSR_TOKEN: ${{ secrets.JSR_TOKEN }}
+       run: deno publish

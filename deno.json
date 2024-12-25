@@ -4,9 +4,21 @@
   "exports": "./main.ts",
   "description": "Text shuffling animation library with random character transitions",
   "license": "MIT",
-  "runtimes": {
-    "deno": ">=1.37",
-    "node": ">=18.0",
-    "bun": ">=1.0"
+  "runtime": {
+    "deno": {
+      "compatible": true
+    },
+    "browser": {
+      "compatible": true 
+    },
+    "workerd": {
+      "compatible": true
+    }
+  },
+  "publish": {
+    "exclude": [
+      "tests/",
+      ".git/"
+    ]
   }
-}
+ }
