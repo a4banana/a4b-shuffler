@@ -26,9 +26,9 @@ const INITIAL_CHARACTER = "-";
  * @interface A4BShufflerOptions
  */
 interface A4BShufflerOptions {
-    /** Text to shuffle */
+    /** Original text to shuffle */
     text: string;
-    /** Animation delay multiplier */
+    /** Animation delay multiplier (default: 2.5) */
     delay?: number;
 }
 

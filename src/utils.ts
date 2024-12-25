@@ -18,15 +18,19 @@ export const defineCaseBySeed = ( seed: number ) =>
 /**
  * Generates random character with random case
  * @param {number} seed Random seed (0-1)
- * @returns {string} Random character with random case
+ * @returns {string} Random character with random casing
  */
 export const generateRandomCharacter = ( seed: number ): string =>
     defineCaseBySeed( seed )( getRandomCharacterBySeed( seed ))
 
 /**
- * Calculates rate array for text animation
- * @param {string} text Input text
- * @returns {Array<number>} Array of progress rates
+ * Get rate array for text animation based on length
+ * @param {string} text Original text
+ * @returns {Array<number>} Array of progress rates (0 to 1)
+ * @example
+ * ```ts
+ * getRatesByTextLength("abc") // [0, 0.5, 1]
+ * ```
  */
 export const getRatesByTextLength = ( text: string ): Array<number> =>
     Array.from({ length: text.length }, ( _, i ) => i / ( text.length - 1 || 1))
