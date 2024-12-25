@@ -1,0 +1,12 @@
+{
+  "name": "@a4banana/a4b-shuffler",
+  "version": "1.0.1",
+  "exports": "./main.ts",
+  "description": "Text shuffling animation library with random character transitions",
+  "license": "MIT",
+  "runtimes": {
+    "deno": ">=1.37",
+    "node": ">=18.0",
+    "bun": ">=1.0"
+  }
+}
