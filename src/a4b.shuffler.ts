@@ -1,30 +1,20 @@
 /**
-* A4B-Shuffler
-* Text shuffling animation library with random character transitions.
-* 
-* @example
-* const shuffler = A4BShuffler({ text: 'Text To Shuffle' })
-* 
-* // Get shuffled text by progress (0-1)
-* shuffler.getShuffledTextByProgress(0)      // "-------------"       (Initial)
-* shuffler.getShuffledTextByProgress(0.5)    // "Te-t To Sh-f-le"    (Mix)
-* shuffler.getShuffledTextByProgress(1)      // "Text To Shuffle"    (Final)
-* 
-* @param {Object} options Configuration options
-* @param {string} options.text - Text to shuffle
-* @param {number} [options.delay=2.5] - Animation delay multiplier
-* @returns {IA4BShuffler} Shuffler instance
+* A4B-Shuffler module implementation
+* @module shuffler
+*
+* Core implementation of text shuffling animation with configurable transitions.
 */
 
 import { getRatesByTextLength, generateRandomCharacter } from './utils.ts';
 import type { IA4BShuffler } from "./types.ts";
 
+/** Initial character for animation placeholders */
 const INITIAL_CHARACTER = "-";
 
 /**
- * Configuration options for A4B Shuffler
- * @interface A4BShufflerOptions
- */
+* Configuration options for the animation controller
+* @interface A4BShufflerOptions
+*/ 
 interface A4BShufflerOptions {
     /** Original text to shuffle */
     text: string;
@@ -32,6 +22,20 @@ interface A4BShufflerOptions {
     delay?: number;
 }
 
+/**
+* Creates text shuffling animation controller
+* @param {A4BShufflerOptions} options Configuration options
+* @param {string} options.text Text to animate
+* @param {number} [options.delay=2.5] Animation delay multiplier
+* @returns {IA4BShuffler} Animation controller instance
+* @example
+* ```ts
+* const shuffler = A4BShuffler({ 
+*   text: "Hello",
+*   delay: 2.0 
+* });
+* ```
+*/
 const A4BShuffler = ({
     text,
     delay = 2.5 

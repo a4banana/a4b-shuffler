@@ -1,6 +1,9 @@
 /**
  * Text animation library that transitions through random characters
- * @module
+ * @module a4b-shuffler
+ * 
+ * This module provides text animation functionality with random character transitions
+ * during the animation progress.
  * 
  * @example
  * ```ts
@@ -13,8 +16,14 @@
  * ```
  */
 
-/** Text shuffling animation controller interface */
+/**
+ * Text shuffling animation interface definition
+ * @see {@link A4BShuffler}
+ */
 export { type IA4BShuffler } from './src/types.ts';
 
-/** Create text shuffling animation instance */
+/**
+ * Creates text shuffling animation controller
+ * @see {@link IA4BShuffler}
+ */
 export { default as A4BShuffler } from './src/a4b.shuffler.ts';
