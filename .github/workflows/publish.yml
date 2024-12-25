@@ -1,17 +1,18 @@
 name: Publish
 on:
-  push:
-    tags: ['v*']
+ push:
+   tags: ['v*']
 permissions:
-  contents: read
-  id-token: write  # OIDC 필요
+ contents: read
 jobs:
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: denoland/setup-deno@v1
-        with:
-          deno-version: "2.1.4"
-      - name: Publish package
-        run: deno publish --check=all
+ publish:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v4
+     - uses: denoland/setup-deno@v1
+       with:
+         deno-version: "2.1.4"
+     - name: Publish package
+       env:
+         JSR_TOKEN: ${{ secrets.JSR_TOKEN }}
+       run: deno publish --check=all
